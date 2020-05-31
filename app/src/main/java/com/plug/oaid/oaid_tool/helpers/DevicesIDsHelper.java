@@ -129,26 +129,25 @@ public class DevicesIDsHelper {
     new Thread(new Runnable() {
       @Override
       public void run() {
-        if ("ASUS".equals(getManufacturer().toUpperCase())) {
-          new ASUSDeviceIDHelper(context).getID(_listener);
-        }
-        else if ("HUAWEI".equals(getManufacturer().toUpperCase())) {
-          new HWDeviceIDHelper(context).getHWID(_listener);
-        }
-        else if ("OPPO".equals(getManufacturer().toUpperCase())) {
-          new OppoDeviceIDHelper(context).getID(_listener);
-        }
-        else if ("ONEPLUS".equals(getManufacturer().toUpperCase())) {
-          new OnePlusDeviceIDHelper(context).getID(_listener);
-        }
-        else if ("ZTE".equals(getManufacturer().toUpperCase())) {
-          new ZTEDeviceIDHelper(context).getID(_listener);
-        }
-        else if ("FERRMEOS".equals(getManufacturer().toUpperCase()) || isFreeMeOS()) {
-          new ZTEDeviceIDHelper(context).getID(_listener);
-        }
-        else if ("SSUI".equals(getManufacturer().toUpperCase()) || isSSUIOS()) {
-          new ZTEDeviceIDHelper(context).getID(_listener);
+        try {
+          if ("ASUS".equals(getManufacturer().toUpperCase())) {
+            new ASUSDeviceIDHelper(context).getID(_listener);
+          } else if ("HUAWEI".equals(getManufacturer().toUpperCase())) {
+            new HWDeviceIDHelper(context).getHWID(_listener);
+          } else if ("OPPO".equals(getManufacturer().toUpperCase())) {
+            new OppoDeviceIDHelper(context).getID(_listener);
+          } else if ("ONEPLUS".equals(getManufacturer().toUpperCase())) {
+            new OnePlusDeviceIDHelper(context).getID(_listener);
+          } else if ("ZTE".equals(getManufacturer().toUpperCase())) {
+            new ZTEDeviceIDHelper(context).getID(_listener);
+          } else if ("FERRMEOS".equals(getManufacturer().toUpperCase()) || isFreeMeOS()) {
+            new ZTEDeviceIDHelper(context).getID(_listener);
+          } else if ("SSUI".equals(getManufacturer().toUpperCase()) || isSSUIOS()) {
+            new ZTEDeviceIDHelper(context).getID(_listener);
+          }
+        }catch (Exception e)
+        {
+          Log.e("OAID","err = "+ e.getMessage());
         }
       }
     }).start();

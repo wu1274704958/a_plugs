@@ -7,10 +7,15 @@ import android.os.Build;
 import android.service.autofill.RegexValidator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.View;
+import android.webkit.ValueCallback;
 import android.widget.TextView;
 
+import com.plug.oaid.Oaid;
 import com.plug.reg.Reg;
+
+import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -32,13 +37,20 @@ public class MainActivity extends AppCompatActivity {
         final TextView tv = (TextView) findViewById(R.id.sample_text);
         tv.setText(stringFromJNI());
 
+//        tv.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                tv.setText( Reg.rand_str(12) );
+//
+//                Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.template);
+//                Reg.SaveImage(MainActivity.this,Reg.rand_str(12),Reg.rand_str(12));
+//            }
+//        });
+
         tv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tv.setText( Reg.rand_str(12) );
-
-                Bitmap b = BitmapFactory.decodeResource(getResources(),R.drawable.template);
-                Reg.SaveImage(MainActivity.this,Reg.rand_str(12),Reg.rand_str(12));
+                Oaid.go(new SparseArray<ValueCallback<JSONObject>>(),0,new JSONObject(),MainActivity.this);
             }
         });
     }

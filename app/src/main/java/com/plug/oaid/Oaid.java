@@ -62,6 +62,7 @@ public class Oaid {
                                 String duid = DeviceIdUtils.getDeviceId(activity);
                                 obj.put("duid", duid == null ? "" : duid);
                                 obj.put("oaid", oaid == null ? "" : oaid);
+                                Log.e(TAG,obj.toString());
                             } catch (Exception e) {
                                 Log.e(TAG, "err = " + e.getMessage());
                             }
